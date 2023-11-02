@@ -23,3 +23,9 @@ function addTaskList(task, taskList) {
 
   taskList.appendChild(taskElement);
 }
+
+function addTask(app) {
+  const newTaskTitle = app.newTaskInput.value;
+  const newTask = createTask(newTaskTitle);
+  app.task.push(newTask);
+}
