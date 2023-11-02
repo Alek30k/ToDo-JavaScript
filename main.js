@@ -32,3 +32,19 @@ function addTask(app) {
   addTaskToList(newTask, app.taskList);
   app.newTaskInput.value = "";
 }
+
+function createTaskElement(task) {
+  const taskElement = document.createElement("li");
+  const taskCheckbox = document.createElement("input");
+  taskCheckbox.type = "checkbox";
+  taskCheckbox.checked = task.isCompleted;
+
+  taskCheckbox.addEventListener("change", () => {
+    task.isCompleted = taskCheckbox.checked;
+    taskText.classList.toogle("completed", task.isCompleted);
+  });
+
+  const taskText = document.createElement("span");
+  taskText.textContent = task.title;
+  taskText.classList.toogle("completed", task.isCompleted);
+}
