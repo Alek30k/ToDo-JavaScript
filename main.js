@@ -18,7 +18,7 @@ function createTask(title, isCompleted = false) {
   };
 }
 
-function addTaskList(task, taskList) {
+function addTaskToList(task, taskList) {
   const taskElement = createTaskElement(task);
 
   taskList.appendChild(taskElement);
@@ -28,4 +28,7 @@ function addTask(app) {
   const newTaskTitle = app.newTaskInput.value;
   const newTask = createTask(newTaskTitle);
   app.task.push(newTask);
+
+  addTaskToList(newTask, app.taskList);
+  app.newTaskInput.value = "";
 }
