@@ -2,10 +2,10 @@ const taskList = document.querySelector("#task-list");
 const newTaskInput = document.querySelector("#new-task-input");
 const addTaskButton = document.querySelector("#add-task-button");
 
-const task = [];
+const tasks = [];
 
 const app = {
-  task,
+  tasks,
   taskList,
   newTaskInput,
 };
@@ -26,8 +26,9 @@ function addTaskToList(task, taskList) {
 
 function addTask(app) {
   const newTaskTitle = app.newTaskInput.value;
+
   const newTask = createTask(newTaskTitle);
-  app.task.push(newTask);
+  app.tasks.push(newTask);
 
   addTaskToList(newTask, app.taskList);
   app.newTaskInput.value = "";
@@ -35,20 +36,34 @@ function addTask(app) {
 
 function createTaskElement(task) {
   const taskElement = document.createElement("li");
+
   const taskCheckbox = document.createElement("input");
   taskCheckbox.type = "checkbox";
   taskCheckbox.checked = task.isCompleted;
 
   taskCheckbox.addEventListener("change", () => {
     task.isCompleted = taskCheckbox.checked;
-    taskText.classList.toogle("completed", task.isCompleted);
+    taskText.classList.toggle("completed", task.isCompleted);
   });
 
   const taskText = document.createElement("span");
   taskText.textContent = task.title;
-  taskText.classList.toogle("completed", task.isCompleted);
+  taskText.classList.toggle("completed", task.isCompleted);
 
   const taskDeleteButton = document.createElement("button");
   taskDeleteButton.textContent = "Eliminar";
   taskDeleteButton.className = "delete-button";
+  taskDeleteButton.addEventListener("click", () => {
+    //Eliminar tarea de la Lista
+  });
+
+  taskElement.appendChild(taskCheckbox);
+  taskElement.appendChild(taskText);
+  taskElement.appendChild(taskDeleteButton);
+
+  return taskElement;
 }
+
+addTaskButton.addEventListener("click", () => {
+  addTask(app);
+});
