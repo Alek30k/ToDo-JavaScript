@@ -47,4 +47,8 @@ function createTaskElement(task) {
   const taskText = document.createElement("span");
   taskText.textContent = task.title;
   taskText.classList.toogle("completed", task.isCompleted);
+
+  const taskDeleteButton = document.createElement("button");
+  taskDeleteButton.textContent = "Eliminar";
+  taskDeleteButton.className = "delete-button";
 }
