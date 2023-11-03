@@ -1,4 +1,4 @@
-const taskList = document.querySelector("#task-list"); //ul
+const tasksList = document.querySelector("#task-list"); //ul
 const newTaskInput = document.querySelector("#new-task-input");
 const addTaskButton = document.querySelector("#add-task-button");
 
@@ -6,12 +6,18 @@ const tasks = [];
 
 const app = {
   tasks,
-  taskList,
+  tasksList,
   newTaskInput,
 };
 
 window.onload = () => {
   const savedTask = JSON.parse(localStorage.getItem("tasks")) || [];
+  app.tasks = savedTask.map((task) => {
+    return createTask(task.title, task.isCompleted);
+  });
+  app.tasks.forEach((task) => {
+    return addTaskToList(task, app.tasksList);
+  });
 };
 
 function saveTaskToLocalStorage(tasks) {
@@ -26,10 +32,10 @@ function createTask(title, isCompleted = false) {
   };
 }
 
-function addTaskToList(task, taskList) {
+function addTaskToList(task, tasksList) {
   const taskElement = createTaskElement(task);
 
-  taskList.appendChild(taskElement);
+  tasksList.appendChild(taskElement);
 }
 
 function addTask(app) {
@@ -38,7 +44,8 @@ function addTask(app) {
   const newTask = createTask(newTaskTitle);
   app.tasks.push(newTask);
 
-  addTaskToList(newTask, app.taskList);
+  addTaskToList(newTask, app.tasksList);
+  saveTaskToLocalStorage(app.tasks);
   app.newTaskInput.value = "";
 }
 
