@@ -31,7 +31,7 @@ function addTask(app) {
   app.tasks.push(newTask);
 
   addTaskToList(newTask, app.taskList);
-  app.newTaskInput.value = "";
+  // app.newTaskInput.value = "";
 }
 
 function createTaskElement(task) {
