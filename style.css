@@ -6,7 +6,7 @@ body {
   line-height: 1.5;
   color: #333;
   margin: 1rem;
-  padding: 0;
+  padding: 20px;
 }
 
 h1 {
@@ -28,17 +28,24 @@ button {
 
 ul {
   list-style-type: none;
-  padding: 0;
+  padding: 10px;
+  /* margin: auto; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* justify-content: start; */
+  gap: 10px;
 }
 
 li {
   background-color: white;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 4px;
+  max-width: 400px;
 }
 
 .completed {

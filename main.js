@@ -59,6 +59,7 @@ function createTaskElement(task) {
   taskCheckbox.addEventListener("change", () => {
     task.isCompleted = taskCheckbox.checked;
     taskText.classList.toggle("completed", task.isCompleted);
+    saveTaskToLocalStorage(app.tasks);
   });
 
   const taskText = document.createElement("span");
