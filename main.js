@@ -54,7 +54,9 @@ function createTaskElement(task) {
   taskDeleteButton.textContent = "Eliminar";
   taskDeleteButton.className = "delete-button";
   taskDeleteButton.addEventListener("click", () => {
-    //Eliminar tarea de la Lista
+    taskElement.remove(); //Elimina del DOM
+
+    const taskIndex = app.tasks.indexOf(task);
   });
 
   taskElement.appendChild(taskCheckbox);
