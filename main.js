@@ -10,6 +10,14 @@ const app = {
   newTaskInput,
 };
 
+window.onload = () => {
+  const savedTask = JSON.parse(localStorage.getItem("tasks")) || [];
+};
+
+function saveTaskToLocalStorage(tasks) {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
 function createTask(title, isCompleted = false) {
   return {
     id: Date.now(),
