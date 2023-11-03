@@ -1,4 +1,4 @@
-const taskList = document.querySelector("#task-list");
+const taskList = document.querySelector("#task-list"); //ul
 const newTaskInput = document.querySelector("#new-task-input");
 const addTaskButton = document.querySelector("#add-task-button");
 
@@ -31,7 +31,7 @@ function addTask(app) {
   app.tasks.push(newTask);
 
   addTaskToList(newTask, app.taskList);
-  // app.newTaskInput.value = "";
+  app.newTaskInput.value = "";
 }
 
 function createTaskElement(task) {
