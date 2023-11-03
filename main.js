@@ -76,6 +76,7 @@ function createTaskElement(task) {
     if (taskIndex > -1) {
       app.tasks.splice(taskIndex, 1); //Elimina del Array
     }
+    saveTaskToLocalStorage(app.tasks);
   });
 
   taskElement.appendChild(taskCheckbox);
