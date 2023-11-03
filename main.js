@@ -57,6 +57,10 @@ function createTaskElement(task) {
     taskElement.remove(); //Elimina del DOM
 
     const taskIndex = app.tasks.indexOf(task);
+
+    if (taskIndex > -1) {
+      app.tasks.splice(taskIndex, 1); //Elimina del Array
+    }
   });
 
   taskElement.appendChild(taskCheckbox);
